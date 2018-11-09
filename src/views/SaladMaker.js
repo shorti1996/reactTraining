@@ -43,12 +43,12 @@ class SaladMaker extends Component {
         return (
             <div className="salad-maker">
                 <h1>SaladMaker</h1>
-                <Salad ingredients={preparedIngredients} />
                 <IngredientsHandler ingredientAdd={this.ingredientAdd} ingredientRemove={this.ingredientRemove} />
                 { this.state.isReadyToOrder
                     ? <OrderForm /> 
                     : <button onClick={this.orderSalad}>Next step</button> 
                 }
+                <Salad ingredients={preparedIngredients} />
             </div>
         );
     };

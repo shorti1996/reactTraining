@@ -4,7 +4,8 @@ const INGREDIENTS = [
     { label: 'Tomato', type: 'tomato' },
     { label: 'Bacon', type: 'bacon' },
     { label: 'Chesse', type: 'cheese' },
-    { label: 'Meat', type: 'meat' }
+    { label: 'Salad', type: 'salad' },
+    { label: 'Meat', type: 'meat' },
 ];
 
 const IngredientsHandler = ({ ingredientAdd, ingredientRemove })  => {
