@@ -6,23 +6,16 @@ import OrderForm from '../components/OrderForm';
 
 class SaladMaker extends Component {
     state = {
-        ingredients: {
-            tomato: 1,
-            bacon: 2,
-            cheese: 3,
-            salad: 4,
-            meat: 5,
-        },
+        ingredients: { },
         isReadyToOrder: false,
     };
 
     ingredientAdd = type => {
-        this.setState({
-            ingredients: {
-                ...this.state.ingredients,
-                [type]: this.state.ingredients[type] + 1
-            }
-        })
+        if (this.state.ingredients[type] === undefined) {
+            this.updateIngredient(type, 1);
+        } else {
+            this.updateIngredient(type, this.state.ingredients[type] + 1)
+        }
     };
 
     ingredientRemove = type => {
@@ -34,6 +27,15 @@ class SaladMaker extends Component {
             }
         })
     };
+
+    updateIngredient = (type, count) => {
+        this.setState({
+            ingredients: {
+                ...this.state.ingredients,
+                [type]: count
+            }
+        })
+    }
 
     orderSalad = () => { this.setState({ isReadyToOrder: true }) };
 
