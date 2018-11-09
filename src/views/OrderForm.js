@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SubmitOrder from '../services/SubmitOrder';
 
 class OrderForm extends Component {
     state = {
@@ -10,7 +11,9 @@ class OrderForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
+        // console.log(this.props.location.state);
+        SubmitOrder(this.state.name, this.state.surname, this.props.location.state.ingredients)
     };
 
     handleInputChange = event => {

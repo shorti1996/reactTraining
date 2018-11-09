@@ -38,9 +38,13 @@ class SaladMaker extends Component {
     }
 
     orderSalad = () => { 
+        console.log("saladMaker")
+        console.log(this.state.ingredients)
         this.props.history.push({
             pathname: '/order-form',
-            state: []
+            state: {
+                ingredients: this.state.ingredients
+            }
         })
     };
 
