@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Salad from '../components/Salad';
 import prepareIngredients from '../utils/prepareIngredients';
 import IngredientsHandler from '../components/IngredientsHandler';
-import OrderForm from '../components/OrderForm';
+import OrderForm from './OrderForm';
 
 class SaladMaker extends Component {
     state = {
@@ -37,7 +37,12 @@ class SaladMaker extends Component {
         })
     }
 
-    orderSalad = () => { this.setState({ isReadyToOrder: true }) };
+    orderSalad = () => { 
+        this.props.history.push({
+            pathname: '/order-form',
+            state: []
+        })
+    };
 
     render() {
         const preparedIngredients = prepareIngredients(this.state.ingredients);
@@ -46,10 +51,7 @@ class SaladMaker extends Component {
             <div className="salad-maker">
                 <h1>SaladMaker</h1>
                 <IngredientsHandler ingredientAdd={this.ingredientAdd} ingredientRemove={this.ingredientRemove} />
-                { this.state.isReadyToOrder
-                    ? <OrderForm /> 
-                    : <button onClick={this.orderSalad}>Next step</button> 
-                }
+                <button onClick={this.orderSalad}>Next step</button> 
                 <Salad ingredients={preparedIngredients} />
             </div>
         );

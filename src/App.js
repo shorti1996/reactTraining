@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
-import './App.scss';
-import SaladMaker from './views/SaladMaker';
+import React from "react";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import "./App.scss";
+import SaladMaker from "./views/SaladMaker";
+import OrderForm from './views/OrderForm';
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
+    <Router>
       <div className="App">
-        <SaladMaker />
+      <Link to="/"> <h2>Salad Maker</h2> </Link>
+      <Route exact path="/" component={SaladMaker}/>
+      <Route exact path="/order-form" component={OrderForm}/>
       </div>
-    );
-  };
+    </Router>
+  );
 };
 
 export default App;
